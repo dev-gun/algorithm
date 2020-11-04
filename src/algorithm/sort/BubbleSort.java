@@ -8,11 +8,11 @@ public class BubbleSort {
 
         int cnt = 0;
         for(int i = 0 ; i < len; i++){
-            for(int j = i+1; j < len; j++){
+            for(int j = 0; j < len -i -1; j++){
                 cnt += 1;
-                if( arr[i] > arr[j] ){
-                    int temp = arr[i];
-                    arr[i] = arr[j];
+                if( arr[j] > arr[j+1] ){
+                    int temp = arr[j+1];
+                    arr[j+1] = arr[j];
                     arr[j] = temp;
                 }
             }
