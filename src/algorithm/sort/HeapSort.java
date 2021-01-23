@@ -24,6 +24,16 @@ public class HeapSort {
         }
         a[parent] = temp;
     }
+    static void heapSort(int[] a, int n){
+        for(int i = (n -1) / 2; i >= 0; i--){
+            downHeap(a, i, n - 1);
+        }
+        for(int i = n - 1; i > 0; i--){
+            swap(a, 0, i);
+
+            downHeap(a, 0, i - 1);
+        }
+    }
     public static void main(String[] args) {
 
     }
