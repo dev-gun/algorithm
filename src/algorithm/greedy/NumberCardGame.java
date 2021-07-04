@@ -1,18 +1,36 @@
 package algorithm.greedy;
 
-/**
- * 내용 : 카드들이 N X M 형태로 놓여 있을 때, 게임의 룰에 맞게 카드를 뽑는 프로그램을 만드시오.
- * 입력 조건 : 첫째 줄에 숫자 카드들이 놓인 행의 개수 N과 열의 개수 M이 공백을 기준으로 하여 각각 자연수로 주어진다. ( 1 <= N, M <= 100)
- *           둘째 줄부터 N개의 줄에 걸쳐 각 카드에 적힌 숫자가 주어진다. 각 숫자는 1 이상 10,000 이하의 자연수이다.
- * 입력 예시   출력 예시
- *  3 3      2
- *  3 1 2
- *  4 1 4
- *  2 2 2
- * 출력 조건 : 첫째 줄에 게임의 룰에 맞게 선택한 카드에 적힌 숫자를 출력한다.
- */
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
+
 public class NumberCardGame {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
+        String a = sc.nextLine();
+        String[] range = a.split(" ");
+
+        //행 수
+        int n = Integer.parseInt(range[0]);
+        //열 수
+        int m = Integer.parseInt(range[1]);
+
+        int[][] nums = new int[m][n];
+        for(int i = 0; i < n; i++) {
+            nums[i] = Arrays.stream(sc.nextLine().split(" "))
+                    .mapToInt(Integer::parseInt).toArray();
+        }
+        System.out.println(solution(n, m, nums));
+    }
+    public static int solution(int n, int m, int[][] nums) {
+        int[] smallNums = new int[m];
+        for(int i = 0; i < m; i++) {
+            Arrays.sort(nums[i]);
+            smallNums[i] = nums[i][0];
+        }
+        Integer[] result = Arrays.stream(smallNums).boxed().toArray(Integer[]::new);
+        Arrays.sort(result, Collections.reverseOrder());
+        return result[0];
     }
 }
