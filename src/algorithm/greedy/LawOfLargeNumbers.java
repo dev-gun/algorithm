@@ -28,12 +28,37 @@ public class LawOfLargeNumbers {
         String a = sc.nextLine();
         String[] range = a.split(" ");
 
-        int N = Integer.parseInt(range[0]);
-        int M = Integer.parseInt(range[1]);
-        int K = Integer.parseInt(range[2]);
+        int n = Integer.parseInt(range[0]);
+        int m = Integer.parseInt(range[1]);
+        int k = Integer.parseInt(range[2]);
 
-        int[] nums = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        // 여기 부터 구현
+        int[] nums = Arrays.stream(sc.nextLine().split(" "))
+                .mapToInt(Integer::parseInt).toArray();
 
+        System.out.println(solution(n, m, k, nums));
+    }
+    public static int solution(int n, int m, int k, int[] nums) {
+        Integer[] sortedNums = Arrays.stream(nums).boxed().toArray(Integer[]::new);
+        Arrays.sort(sortedNums, Collections.reverseOrder());
+
+        int firstValue = sortedNums[0];
+        int secondValue = sortedNums[1];
+
+        int result = 0;
+        while(true) {
+            for(int i = 0; i < k; i++) {
+                if(m == 0) {
+                    break;
+                }
+                result += firstValue;
+                m -= 1;
+            }
+            if(m == 0) {
+                break;
+            }
+            result += secondValue;
+            m -= 1;
+        }
+        return result;
     }
 }
