@@ -1,2 +1,6 @@
 *.class
 .idea
+study/.idea
+book/.idea
+leetcode/.idea
+programmers/.idea
