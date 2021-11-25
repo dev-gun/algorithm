@@ -1,5 +1,8 @@
 package array;
 
+/**
+ * 배열의 합
+ */
 public class SumOfArray {
     public static void main(String[] args) {
         int[] a = { 72, 68, 92, 88, 41, 53, 97, 84, 39, 55 };
