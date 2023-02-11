@@ -7,7 +7,7 @@
  *     var next: ListNode? = null
  * }
  */
-fun addNode(left: ListNode?, right: ListNode?) = (left?.`val` ?: 0) + (right?.`val` ?: 0)
+fun plusNode(left: ListNode?, right: ListNode?) = (left?.`val` ?: 0) + (right?.`val` ?: 0)
 
 class Solution {
     fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
@@ -19,7 +19,7 @@ class Solution {
 
         var carry = 0
         while (cursorLeft != null || cursorRight != null || carry > 0) {
-            val sum = addNode(cursorLeft, cursorRight) + carry
+            val sum = plusNode(cursorLeft, cursorRight) + carry
             carry = if (sum > 9) 1 else 0
 
             ListNode(sum % 10).also {
